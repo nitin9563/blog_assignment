@@ -1,0 +1,17 @@
+{%include "base.html"%}
+
+{%block body%}
+
+
+<div class="view_post_main">
+
+    <div class="view_post_content">
+
+        <h1>{{post.title}}</h1>
+        <p>{{post.content | safe}}</p>
+
+    </div>
+
+</div>
+
+{%endblock body%}

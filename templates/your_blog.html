@@ -1,0 +1,33 @@
+{%include "base.html"%}
+
+{%block body%}
+
+<div class="you_post_main">
+
+    {%if exist%}
+
+    <h1>Yours posted blogs</h1>
+
+    <div class="allpost">
+        
+            {%for blog in post%}
+                <div class="singlepost">
+                
+                    <h2>{{blog.title}}</h2>
+                    <p>To check complete blog view this blog!</p>
+
+                    <a href="/view_post/{{blog.id}}/">view Post</a>
+                    <a href="/update_blog/{{blog.id}}/">update</a>
+                
+                </div>
+            {%endfor%}
+        
+    </div>
+
+    {%else%}
+        <h1>No blog exists ! please create a blog</h1>
+    {%endif%}
+</div>
+
+
+{%endblock body%}

@@ -1,0 +1,25 @@
+{%include "base.html"%}
+
+{%block body%}
+
+
+<div class="main">
+
+    <h1>Welcome to Blog_website</h1>
+
+    <div class="allpost">
+        {%for post in all_blogs%}
+            <div class="singlepost">
+            
+                <h2>{{post.title}}</h2>
+                <p>To check complete blog view this blog!</p>
+
+                <a href="/view_post/{{post.id}}/">view Post</a>
+            
+            </div>
+        {%endfor%}
+        
+    </div>
+</div>
+
+{%endblock body%}

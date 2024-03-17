@@ -1,0 +1,93 @@
+{%include "base.html"%}
+
+{%block body%}
+<script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
+
+    <div class="create_blog">
+
+        <!--create -->
+
+        {%if not update%}
+            <form action="" method="post" id="blog-form"> {%csrf_token%}
+
+                <div>
+                    <label for="title"><h3>Title here:</h3></label><br/>
+                    <input type="text" placeholder="Title" name="title" id="title">
+                </div>
+
+                <div>
+                    <label for="content"><h1>Write your content here</h1></label><br>
+                    <textarea name="content" id="content" cols="30" rows="20"></textarea>
+                </div>
+
+                <div>
+                    <button type="submit">Post</button>
+                </div>
+            </form>
+
+        {%else%}
+            <form action="" method="post" id="blog-form"> {%csrf_token%}
+
+            <div>
+                <label for="title"><h3>Title here:</h3></label><br/>
+                <input type="text" placeholder="Title" name="title" id="title" value="{{blog.title}}">
+            </div>
+
+            <div>
+                <label for="content"><h1>Write your content here</h1></label><br>
+                <textarea name="content" id="content" cols="30" rows="20">
+                    {{blog.content|safe}}
+                </textarea>
+            </div>
+
+            <div>
+                <button type="submit">Post</button>
+            </div>
+            </form>
+
+        {%endif%}
+
+
+    </div>
+
+
+
+    <script>
+        ClassicEditor.create( document.querySelector( '#content' ) ).then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+
+
+        </script>
+
+<script>
+
+    $('#blog-form').on('submit', function(event) {
+    event.preventDefault();  
+    var title = $("#title").val();
+    var content = $("#content").val();
+    var csrftoken = $('[name=csrfmiddlewaretoken]').val();
+
+    $.ajax({
+        type: "POST",
+        url: "/create_blog/",
+        data: {
+            title: title, 
+            content: content,
+            csrfmiddlewaretoken: csrftoken  // Include CSRF token in data
+        },
+        success: function(response) {
+            window.location.href = "/";
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+        }
+    });
+});
+
+    </script>
+
+{%endblock body%}

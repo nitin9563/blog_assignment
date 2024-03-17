@@ -1,0 +1,298 @@
+*{
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* nav */
+
+nav{
+    height: 7vh;
+    width: 100vw;
+    background-color: black;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav>a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin:0 2vw;
+
+}
+
+
+
+/* Index */
+.main, .you_post_main{
+    height: auto;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10vh;
+}
+
+.main>h1, .you_post_main>h1{
+    width: 70vw;
+    height: 5vh;
+    /* border: 2px solid red; */
+    margin-top: 5vh;
+    font-size: 2.5rem;
+}
+
+.allpost{
+    width: 70vw;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 2px solid green; */
+    justify-content: space-between;
+    gap: 2vh;
+}
+
+.singlepost{
+    width: 30%;
+    height: 20vh;
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+
+}
+
+.singlepost>h2{
+    width: 80%;
+    height: 30%;
+    /* font-size: 1.3rem; */
+}
+
+.singlepost>p{
+    width: 80%;
+    height: 20%;
+    font-size: 1rem;
+    overflow: hidden;
+}
+
+.singlepost>a{
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    height: 25%;
+    width: 30%;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .3rem;
+}
+
+
+
+/* login  and signup*/
+
+.loginmain, .signupmain {
+    height: 100vh;
+    width: 100vw;
+    /* border: 2px solid grey; */
+    display: flex;
+    justify-content: center;
+}
+
+.loginmain>form, .signupmain>form{
+    height: 30vh;
+    width: 40vw;
+    margin-top: 5vh;
+    border: 2px solid grey;
+    display: flex;
+    padding-top: 2%;
+    gap: 5%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.signupmain>form{
+    height: 45vh;
+}
+
+.loginmain>form>div{
+    width: 70%;
+    height: 20%;
+}
+
+.signupmain>form>div{
+    width: 70%;
+    height: 15%;
+}
+
+.loginmain input , .signupmain input, .create_blog input {
+    outline: none;
+    border: 1px solid black;
+    padding-left: 2%;
+    height: 50%;
+}
+
+.loginmain button , .signupmain button, .create_blog button{
+    background-color: black;
+    color: white;
+    font-size: 1.3rem;
+    height: 70%;
+    width: 30%;
+    cursor: pointer;
+}
+
+/* msg */
+
+.msg{
+    width: 70vw;
+    height: 4vh;
+    background: lightblue;
+    color: black;
+    margin: auto;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+
+
+/* create blog */
+
+.create_blog {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 7vh;
+}
+
+.create_blog>form{
+    height: 70vh;
+    width: 70vw;
+    border-radius: 5px;
+    border: 2px solid grey;
+    display: flex;
+    padding-top: 2%;
+    gap: 5%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.create_blog>form>div{
+    height: 15%;
+    width: 80%;
+}
+
+.create_blog>form>div:nth-child(3){
+    height: 60%;
+    width: 80%;
+    overflow-y: auto;
+}
+
+
+.create_blog>form>div>textarea{
+    height: 70%;
+    resize: none;
+    overflow-y: auto;
+}
+
+/* view post */
+
+
+.view_post_main{
+    height: auto;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 7vh;
+
+}
+
+
+.view_post_content{
+    height: auto;
+    width: 80%;
+    display: flex;
+    border: 2px solid grey;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2vh;
+}
+
+.view_post_content > h1{
+    width: 80%;
+    height: 10vh;
+    font-size: 2.5rem;
+}
+
+.view_post_content > p{
+    width: 80%;
+    height: auto;
+    font-size: 1.5rem;
+}
+
+
+
+
+@media screen and (max-width: 1400px) {
+    .allpost{
+        width: 90vw;
+    }
+
+    .singlepost>a{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .singlepost{
+        width: 47%;
+        height: 30vh;
+    }
+
+    
+    .create_blog>form>div>textarea{
+        width: 100%;
+    }
+
+    .loginmain>form, .signupmain>form{
+        width:70vw ;
+    }
+
+    .create_blog>form{
+        width: 90vw;
+    }
+
+    .view_post_content{
+        width: 95%;
+    }
+
+}
+
+
+@media screen and (max-width: 700px) {
+    .allpost{
+        justify-content: center;
+    }
+    .singlepost{
+        width: 80%;
+    }
+
+    .loginmain>form, .signupmain>form{
+        width:90vw ;
+    }
+
+
+}
+@media screen and (max-width: 450px) {
+
+    .singlepost{
+        width: 100%;
+    }
+}
