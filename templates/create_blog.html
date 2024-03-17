@@ -9,7 +9,7 @@
 
         {%if not update%}
             <form action="" method="post" id="blog-form"> {%csrf_token%}
-
+                <input type="text" value="0" id="update" style="display: none;"/>
                 <div>
                     <label for="title"><h3>Title here:</h3></label><br/>
                     <input type="text" placeholder="Title" name="title" id="title">
@@ -27,7 +27,7 @@
 
         {%else%}
             <form action="" method="post" id="blog-form"> {%csrf_token%}
-
+            <input type="text" value="1" id="update" style="display: none;"/>
             <div>
                 <label for="title"><h3>Title here:</h3></label><br/>
                 <input type="text" placeholder="Title" name="title" id="title" value="{{blog.title}}">
@@ -39,6 +39,8 @@
                     {{blog.content|safe}}
                 </textarea>
             </div>
+
+            <input type="text" value="{{blog.id}}" id="blog_id" style="display: none;">
 
             <div>
                 <button type="submit">Post</button>
@@ -65,21 +67,32 @@
 
 <script>
 
+
+
     $('#blog-form').on('submit', function(event) {
     event.preventDefault();  
     var title = $("#title").val();
     var content = $("#content").val();
     var csrftoken = $('[name=csrfmiddlewaretoken]').val();
+    var update = $("#update").val();
+    var blogid = $("#blog_id").val();
+    var urlneed =  "/create_blog/";
 
+    if(update == "1"){
+
+        urlneed = "/update_blog/" + blogid + "/"
+    }
+    
     $.ajax({
         type: "POST",
-        url: "/create_blog/",
+        url: urlneed,
         data: {
             title: title, 
             content: content,
             csrfmiddlewaretoken: csrftoken  // Include CSRF token in data
         },
         success: function(response) {
+            console.log(urlneed);
             window.location.href = "/";
         },
         error: function(xhr, status, error) {

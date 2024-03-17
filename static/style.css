@@ -189,7 +189,7 @@ nav>a{
     width: 80%;
 }
 
-.create_blog>form>div:nth-child(3){
+.create_blog>form>div:nth-child(4){
     height: 60%;
     width: 80%;
     overflow-y: auto;

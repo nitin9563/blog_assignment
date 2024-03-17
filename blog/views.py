@@ -121,6 +121,7 @@ def update_blog(request,id):
     if request.method == "POST":
         title_up = request.POST.get("title")
         content_up = request.POST.get("content")
+        print("updated")
 
 
 
@@ -128,9 +129,10 @@ def update_blog(request,id):
             title_up = bleach.clean(title_up ,  tags=[], attributes={}, strip=True)
             content_up = bleach.clean(content_up, tags=['a', 'p', 'strong', 'em', "h1" ,"h2" , "h3" , "h4" , "h5" , "h6" , "br" , "hr"], attributes={}, strip=True)
 
-            blog["title"] = title_up 
-            blog["content"] = content_up 
-            blog.save()
+            blog.title = title_up 
+            blog.content = content_up 
+
+            blog.save(update_fields=["title","content"])
 
             messages.error(request,"succesfully  updated!")
 
