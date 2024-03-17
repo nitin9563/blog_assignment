@@ -162,8 +162,15 @@ def your_blogs(request):
 
 
 def logout_user(request):
+
     if not request.user.is_authenticated:
         return redirect("/login/")
     
     logout(request)
     return redirect('/')
+
+
+def delete_blog(request,id):
+    obj = BlogPost.objects.filter(id=id).delete()
+    messages.error(request,"Blog deleted successfully.")
+    return redirect("/your_blogs/")

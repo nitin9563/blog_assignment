@@ -248,6 +248,12 @@ nav>a{
     .singlepost>a{
         width: 45%;
     }
+
+    .you_post_main .singlepost>a{
+        width: 30%;
+        font-size: 0.8rem;
+        
+    }
 }
 
 @media screen and (max-width: 1000px) {
